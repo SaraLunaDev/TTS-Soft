@@ -60,16 +60,22 @@ h2 {
 }
 
 button {
-    background: #cf6262; /* Nuevo color */
+    width: 100%; /* Ocuparán toda la celda asignada */
+    max-width: 150px; /* Tamaño máximo para evitar que crezcan demasiado */
+    height: 50px; /* Alto fijo */
+    font-size: 14px; /* Tamaño del texto */
+    text-align: center; /* Centra el texto */
+    background: #cf6262;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño */
 }
 
 button:hover {
-    background: #b14f4f; /* Color más oscuro para el hover */
+    background: #aa4945;
 }
 
 
