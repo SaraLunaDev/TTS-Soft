@@ -36,7 +36,7 @@ section {
 }
 
 h2 {
-    color: rgb(238, 238, 238);
+    color: #222;
 }
 
 #mainContainer {
@@ -127,5 +127,6 @@ body.dark-mode h2 {
 }
 
 body.dark-mode section {
+
     background: #555;
 }
