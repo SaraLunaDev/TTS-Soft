@@ -51,17 +51,19 @@ h2 {
 
 #voiceContainer, #soundContainer {
     display: grid;
-    gap: 15px; /* Espacio entre filas y columnas */
-    margin: 0 auto; /* Centra el contenido dentro de su sección */
-    width: 100%; /* Asegúrate de que no exceda el ancho del contenedor */
-    box-sizing: border-box; /* Incluye padding y borde en el tamaño */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Botones adaptativos */
+    gap: 15px; /* Espaciado entre botones */
+    justify-content: center; /* Centra las filas horizontalmente */
+    width: 100%; /* Asegura que el contenedor ocupe el ancho de la sección */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
 }
 
 button {
-    width: auto; /* Deja que el grid determine el ancho */
+    width: 100%; /* El botón ocupará todo el espacio disponible dentro de la celda */
+    max-width: 150px; /* Tamaño máximo para evitar que se hagan demasiado grandes */
     min-width: 120px; /* Tamaño mínimo */
-    max-width: 150px; /* Tamaño máximo */
     height: 50px; /* Alto fijo */
+    font-size: 14px; /* Tamaño del texto */
     text-align: center;
     background: #0078d7;
     color: white;
@@ -69,7 +71,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
-    box-sizing: border-box; /* Incluye padding y borde */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño */
 }
 
 button:hover {
