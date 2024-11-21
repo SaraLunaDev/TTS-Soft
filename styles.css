@@ -61,13 +61,13 @@ h2 {
 }
 
 button {
-    background: #d4d4d4; /* Nuevo color */
+    background: #d4d4d4; /* Color claro del botón */
     min-height: 40px;
-    color: rgb(29, 29, 29);
+    color: black; /* Texto negro */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s; /* Transición para fondo y texto */
 }
 
 button:hover {
@@ -107,19 +107,21 @@ body.dark-mode #mainContainer {
     color: rgb(238, 238, 238);;
 }
 
-body.dark-mode section {
-    background-color: #555; /* Fondo más oscuro para las secciones */
-    color: rgb(238, 238, 238);
+/* Botones en modo oscuro */
+body.dark-mode button:not(.theme-button) {
+    background: #333; /* Fondo oscuro del botón */
+    color: white; /* Texto blanco */
 }
 
-body.dark-mode button:not(.theme-button) {
-    background: #333;
+body.dark-mode button:not(.theme-button):hover {
+    background: #202020; /* Fondo más oscuro al pasar el ratón */
 }
 
 body.dark-mode button:not(.theme-button):hover {
     background: #202020;
 }
 
-body.dark-mode h2  {
-    color: rgb(238, 238, 238);;
+/* Encabezados en modo oscuro */
+body.dark-mode h2 {
+    color: white; /* Texto blanco en modo oscuro */
 }
