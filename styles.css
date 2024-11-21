@@ -38,6 +38,17 @@ h2 {
     color: #0053a6;
 }
 
+/* Contenedor principal */
+#mainContainer {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    background-color: white; /* Fondo para destacar */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+
 #voiceContainer, #soundContainer {
     display: grid;
     grid-template-columns: repeat(10, 150px); /* Máximo 10 botones por fila, cada uno de 150px */
