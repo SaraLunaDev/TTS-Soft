@@ -107,3 +107,7 @@ body.dark-mode section {
     background-color: #555; /* Fondo más oscuro para las secciones */
     color: white;
 }
+
+button.dark-mode {
+    background: #333;
+}
