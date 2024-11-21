@@ -36,7 +36,7 @@ section {
 }
 
 h2 {
-    color: #cf6262;
+    color: #f18d8d;
 }
 
 #mainContainer {
@@ -60,7 +60,7 @@ h2 {
 }
 
 button {
-    background: #cf6262; /* Nuevo color */
+    background: #f18d8d; /* Nuevo color */
     min-height: 40px;
     color: white;
     border: none;
@@ -70,7 +70,7 @@ button {
 }
 
 button:hover {
-    background: #b14f4f; /* Color más oscuro para el hover */
+    background: #be6458; /* Color más oscuro para el hover */
 }
 
 
