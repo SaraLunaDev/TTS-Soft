@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background: #0078d7;
+    background: #cf6262;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -36,7 +36,7 @@ section {
 }
 
 h2 {
-    color: #0053a6;
+    color: #cf6262;
 }
 
 #mainContainer {
@@ -65,7 +65,7 @@ button {
     height: 50px; /* Alto fijo */
     font-size: 14px; /* Tamaño del texto */
     text-align: center; /* Centra el texto */
-    background: #0078d7;
+    background: #cf6262;
     color: white;
     border: none;
     border-radius: 5px;
@@ -75,7 +75,7 @@ button {
 }
 
 button:hover {
-    background: #0053a6;
+    background: #aa4945;
 }
 
 
