@@ -38,10 +38,9 @@ h2 {
     color: #0053a6;
 }
 
-/* Botones en tablas */
 #voiceContainer, #soundContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ancho máximo de 150px */
     gap: 15px;
     justify-items: center;
     margin-top: 20px;
