@@ -40,13 +40,12 @@ h2 {
 
 #voiceContainer, #soundContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ancho máximo de 150px */
-    gap: 15px;
-    justify-items: center;
+    grid-template-columns: repeat(10, 1fr); /* Máximo de 10 columnas */
+    gap: 15px; /* Espaciado entre botones */
+    justify-items: center; /* Centrar botones en su celda */
     margin-top: 20px;
 }
 
-/* Estilos de botones */
 button {
     width: 150px; /* Ancho fijo */
     height: 50px; /* Alto fijo */
