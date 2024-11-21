@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background: #cf6262;
+    background: #555;
     color: rgb(238, 238, 238);
     padding: 20px 0;
     text-align: center;
@@ -36,7 +36,7 @@ section {
 }
 
 h2 {
-    color: #f18d8d;
+    color: rgb(238, 238, 238);
 }
 
 #mainContainer {
@@ -61,9 +61,9 @@ h2 {
 }
 
 button {
-    background: #f18d8d; /* Nuevo color */
+    background: #d4d4d4; /* Nuevo color */
     min-height: 40px;
-    color: white;
+    color: rgb(29, 29, 29);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background: #be6458; /* Color más oscuro para el hover */
+    background: #adadad; /* Color más oscuro para el hover */
 }
 
 /* Estilo base del botón de alternancia */
@@ -99,17 +99,17 @@ button:hover {
 /* Modo oscuro */
 body.dark-mode {
     background-color: #333;
-    color: white;
+    color: rgb(238, 238, 238);;
 }
 
 body.dark-mode #mainContainer {
     background-color: #444; /* Gris oscuro para el contenedor principal */
-    color: white;
+    color: rgb(238, 238, 238);;
 }
 
 body.dark-mode section {
     background-color: #555; /* Fondo más oscuro para las secciones */
-    color: white;
+    color: rgb(238, 238, 238);
 }
 
 body.dark-mode button:not(.theme-button) {
@@ -121,5 +121,5 @@ body.dark-mode button:not(.theme-button):hover {
 }
 
 body.dark-mode h2  {
-    color: white;
+    color: rgb(238, 238, 238);;
 }
