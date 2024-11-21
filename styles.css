@@ -10,8 +10,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #555;
-    color: rgb(238, 238, 238);
+    background: #e6e6e6;
+    color: rgb(54, 54, 54);
     padding: 0 20px; 
     height: 100px;
     box-sizing: border-box;
@@ -239,4 +239,18 @@ body.dark-mode .button-30:hover {
 body.dark-mode .button-30:active {
     box-shadow: #222 0 3px 7px inset;
     transform: translateY(2px);
+}
+
+body.dark-mode header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #555;
+    color: rgb(238, 238, 238);
+    padding: 0 20px; 
+    height: 100px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
