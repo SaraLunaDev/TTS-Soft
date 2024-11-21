@@ -25,7 +25,11 @@ function loadButtons(container, directory, fileList, type) {
     fileList.forEach(file => {
         const button = document.createElement('button');
         const fileName = file.replace('.mp3', '');
-        button.textContent = fileName;
+        
+        // Asigna la clase `button-30`
+        button.className = 'button-30';
+        button.role = 'button'; // Añade el atributo role
+        button.textContent = fileName; // Texto del botón
 
         button.addEventListener('click', () => {
             if (currentAudio) {
