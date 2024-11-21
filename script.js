@@ -1,21 +1,39 @@
-const buttonContainer = document.getElementById('buttonContainer');
+// Contenedores
+const voiceContainer = document.getElementById('voiceContainer');
+const soundContainer = document.getElementById('soundContainer');
 
-// Obtener la lista de archivos MP3 desde el archivo JSON
-fetch('./mp3-list.json')
-    .then(response => response.json())
-    .then(mp3Files => {
-        mp3Files.forEach(file => {
-            const button = document.createElement('button');
-            const fileName = file.replace('.mp3', '');
-            button.textContent = fileName;
+// Carpetas y archivos
+const voicesDirectory = './static/voices/';
+const soundsDirectory = './static/sounds/';
 
-            // Configurar botón para reproducir el audio
-            button.addEventListener('click', () => {
-                const audio = new Audio(`./mp3/${file}`);
-                audio.play();
-            });
+// Función para cargar archivos y crear botones dinámicamente
+function loadButtons(container, directory, fileList) {
+    fileList.forEach(file => {
+        const button = document.createElement('button');
+        const fileName = file.replace('.mp3', '');
+        button.textContent = fileName;
 
-            buttonContainer.appendChild(button);
+        button.addEventListener('click', () => {
+            const audio = new Audio(`${directory}${file}`);
+            audio.play();
         });
+
+        container.appendChild(button);
+    });
+}
+
+// Cargar botones de voces
+fetch('./static/voices-list.json')
+    .then(response => response.json())
+    .then(voiceFiles => {
+        loadButtons(voiceContainer, voicesDirectory, voiceFiles);
     })
-    .catch(error => console.error('Error al cargar los archivos:', error));
+    .catch(error => console.error('Error al cargar las voces:', error));
+
+// Cargar botones de sonidos
+fetch('./static/sounds-list.json')
+    .then(response => response.json())
+    .then(soundFiles => {
+        loadButtons(soundContainer, soundsDirectory, soundFiles);
+    })
+    .catch(error => console.error('Error al cargar los sonidos:', error));

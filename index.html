@@ -3,18 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reproductor de MP3</title>
+    <title>Sonidos y Voces</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Reproductor de MP3</h1>
+        <h1>Sonidos y Voces</h1>
     </header>
     <main>
-        <div id="buttonContainer"></div>
+        <!-- Sección de introducción -->
+        <section id="intro">
+            <h2>Bienvenido</h2>
+            <p>
+                Esta página te permite reproducir sonidos y voces. 
+                Puedes encontrar una sección para reproducir frases grabadas y otra para efectos de sonido.
+                Simplemente haz clic en los botones para escucharlos.
+            </p>
+        </section>
+
+        <!-- Sección de voces -->
+        <section id="voices">
+            <h2>Voces</h2>
+            <div id="voiceContainer"></div>
+        </section>
+
+        <!-- Sección de sonidos -->
+        <section id="sounds">
+            <h2>Sonidos</h2>
+            <div id="soundContainer"></div>
+        </section>
     </main>
     <footer>
-        <p>© 2024 Mi Web</p>
+        <p>© 2024 Mi Página</p>
     </footer>
     <script src="script.js"></script>
 </body>

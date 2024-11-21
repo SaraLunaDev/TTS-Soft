@@ -2,20 +2,33 @@ const fs = require('fs');
 const path = require('path');
 
 // Rutas importantes
-const mp3Folder = path.join(__dirname, 'mp3'); // Carpeta donde están los MP3
-const outputFile = path.join(__dirname, 'mp3-list.json'); // Archivo de salida
+const staticFolder = path.join(__dirname, 'static');
+const soundsFolder = path.join(staticFolder, 'sounds');
+const voicesFolder = path.join(staticFolder, 'voices');
 
-// Leer archivos MP3 y generar el archivo JSON
-fs.readdir(mp3Folder, (err, files) => {
+const soundsOutput = path.join(staticFolder, 'sounds-list.json');
+const voicesOutput = path.join(staticFolder, 'voices-list.json');
+
+// Generar lista de sonidos
+fs.readdir(soundsFolder, (err, files) => {
     if (err) {
-        console.error('Error leyendo la carpeta MP3:', err);
+        console.error('Error leyendo la carpeta de sonidos:', err);
         return;
     }
 
-    // Filtrar solo los archivos .mp3
-    const mp3Files = files.filter(file => file.endsWith('.mp3'));
+    const soundFiles = files.filter(file => file.endsWith('.mp3'));
+    fs.writeFileSync(soundsOutput, JSON.stringify(soundFiles, null, 2));
+    console.log(`Archivo ${soundsOutput} generado con éxito con ${soundFiles.length} archivos.`);
+});
 
-    // Guardar la lista de MP3 en el archivo JSON
-    fs.writeFileSync(outputFile, JSON.stringify(mp3Files, null, 2));
-    console.log(`Archivo ${outputFile} generado con éxito con ${mp3Files.length} archivos MP3.`);
+// Generar lista de voces
+fs.readdir(voicesFolder, (err, files) => {
+    if (err) {
+        console.error('Error leyendo la carpeta de voces:', err);
+        return;
+    }
+
+    const voiceFiles = files.filter(file => file.endsWith('.mp3'));
+    fs.writeFileSync(voicesOutput, JSON.stringify(voiceFiles, null, 2));
+    console.log(`Archivo ${voicesOutput} generado con éxito con ${voiceFiles.length} archivos.`);
 });
