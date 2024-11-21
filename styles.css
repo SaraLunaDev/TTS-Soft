@@ -57,7 +57,7 @@ h2 {
 }
 
 button {
-    width: 150px; /* Ancho fijo */
+    width: 120px; /* Tamaño mínimo para adaptarse al grid */
     height: 50px; /* Alto fijo */
     padding: 0; /* Sin espacio interno */
     font-size: 14px; /* Tamaño del texto */
@@ -73,4 +73,5 @@ button {
 button:hover {
     background: #0053a6;
 }
+
 
