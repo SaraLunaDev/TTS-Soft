@@ -74,24 +74,6 @@ button:hover {
     background: #be6458; /* Color más oscuro para el hover */
 }
 
-/* Estilo base del botón de alternancia */
-.theme-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background: #cf6262;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.theme-button:hover {
-    background: #b14f4f;
-}
-
 /* Modo oscuro */
 body.dark-mode {
     background-color: #333;
@@ -103,8 +85,7 @@ body.dark-mode #mainContainer {
     color: white;
 }
 
-body.dark-mode button {
-    background-color: #cf6262;
+body.dark-mode section {
+    background-color: #555; /* Fondo más oscuro para las secciones */
     color: white;
 }
-
