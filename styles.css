@@ -47,9 +47,13 @@ h2 {
     margin-top: 20px;
 }
 
+/* Estilos de botones */
 button {
-    padding: 15px 20px;
-    font-size: 14px;
+    width: 150px; /* Ancho fijo */
+    height: 50px; /* Alto fijo */
+    padding: 0; /* Quita el espacio interno */
+    font-size: 14px; /* Tamaño del texto */
+    text-align: center;
     background: #0078d7;
     color: white;
     border: none;
@@ -61,3 +65,4 @@ button {
 button:hover {
     background: #0053a6;
 }
+
