@@ -40,16 +40,16 @@ h2 {
 
 #voiceContainer, #soundContainer {
     display: grid;
-    grid-template-columns: repeat(10, 1fr); /* Máximo de 10 columnas */
-    gap: 15px; /* Espaciado entre botones */
-    justify-items: center; /* Centrar botones en su celda */
+    grid-template-columns: repeat(10, 150px); /* Máximo 10 botones por fila, cada uno de 150px */
+    gap: 15px; /* Espaciado entre los botones */
+    justify-content: center; /* Centrar las filas horizontalmente */
     margin-top: 20px;
 }
 
 button {
     width: 150px; /* Ancho fijo */
     height: 50px; /* Alto fijo */
-    padding: 0; /* Quita el espacio interno */
+    padding: 0; /* Sin espacio interno */
     font-size: 14px; /* Tamaño del texto */
     text-align: center;
     background: #0078d7;
