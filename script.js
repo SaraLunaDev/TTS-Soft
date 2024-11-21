@@ -10,15 +10,19 @@ const soundsDirectory = './static/sounds/';
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 
-// Restaurar el tema guardado
+// Restaurar el tema guardado o establecer el predeterminado
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
+
+if (savedTheme === 'light') {
+    document.body.classList.remove('dark-mode');
+    themeIcon.src = './static/resources/sun.png'; // Cambia al sol
+    themeIcon.alt = 'Modo Oscuro';
+} else {
+    // Si no hay tema guardado o el tema es "dark", activa el modo oscuro
     document.body.classList.add('dark-mode');
     themeIcon.src = './static/resources/moon.png'; // Cambia a la luna
     themeIcon.alt = 'Modo Claro';
-} else {
-    themeIcon.src = './static/resources/sun.png'; // Cambia al sol
-    themeIcon.alt = 'Modo Oscuro';
+    localStorage.setItem('theme', 'dark'); // Guarda el tema oscuro como predeterminado
 }
 
 // Función para cargar archivos y crear botones dinámicamente
