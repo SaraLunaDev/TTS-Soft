@@ -40,7 +40,7 @@ h2 {
 }
 
 #mainContainer {
-    max-width: 1200px; /* Ancho máximo */
+    max-width: 1000px; /* Ancho máximo */
     margin: 0 auto; /* Centrado horizontal */
     padding: 20px; /* Espacio interno */
     background-color: white; /* Fondo */
