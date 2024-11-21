@@ -51,7 +51,6 @@ h2 {
 
 #voiceContainer, #soundContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Botones dinámicos */
     gap: 15px; /* Espacio entre filas y columnas */
     margin: 0 auto; /* Centra el contenido dentro de su sección */
     width: 100%; /* Asegúrate de que no exceda el ancho del contenedor */
