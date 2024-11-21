@@ -61,7 +61,7 @@ h2 {
 }
 
 button {
-    background: #666; /* Color claro del botón */
+    background: #bbb; /* Color claro del botón */
     min-height: 40px;
     color: black; /* Texto negro */
     border: none;
