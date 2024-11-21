@@ -51,20 +51,20 @@ h2 {
 
 #voiceContainer, #soundContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Botones adaptativos */
-    gap: 15px; /* Espaciado entre botones */
-    justify-content: center; /* Centra las filas horizontalmente */
-    width: 100%; /* Asegura que el contenedor ocupe el ancho de la sección */
-    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Máximo 150px por botón */
+    gap: 15px; /* Espacio entre filas y columnas */
+    justify-content: center; /* Centra las columnas dentro del contenedor */
+    align-items: center; /* Centra verticalmente los botones */
+    width: 100%; /* Asegura que el grid no se salga del contenedor */
+    box-sizing: border-box; /* Incluye padding y borde en el cálculo */
 }
 
 button {
-    width: 100%; /* El botón ocupará todo el espacio disponible dentro de la celda */
-    max-width: 150px; /* Tamaño máximo para evitar que se hagan demasiado grandes */
-    min-width: 120px; /* Tamaño mínimo */
+    width: 100%; /* Ocuparán toda la celda asignada */
+    max-width: 150px; /* Tamaño máximo para evitar que crezcan demasiado */
     height: 50px; /* Alto fijo */
     font-size: 14px; /* Tamaño del texto */
-    text-align: center;
+    text-align: center; /* Centra el texto */
     background: #0078d7;
     color: white;
     border: none;
