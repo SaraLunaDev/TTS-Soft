@@ -127,10 +127,5 @@ body.dark-mode h2 {
 }
 
 body.dark-mode section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: #333;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    background: #555;
 }
