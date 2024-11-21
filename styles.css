@@ -32,35 +32,37 @@ section {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 h2 {
     color: #0053a6;
 }
 
-/* Contenedor principal */
 #mainContainer {
     max-width: 1200px; /* Ancho máximo */
-    margin: 0 auto; /* Centra horizontalmente */
-    padding: 20px; /* Espaciado interno */
-    background-color: white; /* Fondo para destacar */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 20px; /* Espacio interno */
+    background-color: white; /* Fondo */
     border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    box-sizing: border-box; /* Incluye padding en el tamaño */
 }
 
 #voiceContainer, #soundContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ajuste dinámico de columnas */
-    gap: 15px; /* Espaciado entre los botones */
-    justify-items: center; /* Centra los botones dentro de sus celdas */
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Botones dinámicos */
+    gap: 15px; /* Espacio entre filas y columnas */
+    margin: 0 auto; /* Centra el contenido dentro de su sección */
+    width: 100%; /* Asegúrate de que no exceda el ancho del contenedor */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño */
 }
 
 button {
-    width: 120px; /* Tamaño mínimo para adaptarse al grid */
+    width: auto; /* Deja que el grid determine el ancho */
+    min-width: 120px; /* Tamaño mínimo */
+    max-width: 150px; /* Tamaño máximo */
     height: 50px; /* Alto fijo */
-    padding: 0; /* Sin espacio interno */
-    font-size: 14px; /* Tamaño del texto */
     text-align: center;
     background: #0078d7;
     color: white;
@@ -68,6 +70,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    box-sizing: border-box; /* Incluye padding y borde */
 }
 
 button:hover {
