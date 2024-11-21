@@ -6,15 +6,19 @@ const soundContainer = document.getElementById('soundContainer');
 const voicesDirectory = './static/voices/';
 const soundsDirectory = './static/sounds/';
 
-// Referencia al botón de alternancia
+// Referencias al botón y al icono
 const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
 
 // Restaurar el tema guardado
 const savedTheme = localStorage.getItem('theme');
-
 if (savedTheme === 'dark') {
     document.body.classList.add('dark-mode');
-    themeToggle.textContent = 'Modo Claro';
+    themeIcon.src = './static/resources/moon.png'; // Cambia a la luna
+    themeIcon.alt = 'Modo Claro';
+} else {
+    themeIcon.src = './static/resources/sun.png'; // Cambia al sol
+    themeIcon.alt = 'Modo Oscuro';
 }
 
 // Función para cargar archivos y crear botones dinámicamente
@@ -49,15 +53,17 @@ fetch('./static/sounds-list.json')
     })
     .catch(error => console.error('Error al cargar los sonidos:', error));
 
-// Alternar entre modos y guardar preferencia
+// Alternar entre modos y cambiar el icono
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    
+
     if (document.body.classList.contains('dark-mode')) {
-        themeToggle.textContent = 'Modo Claro';
+        themeIcon.src = './static/resources/moon.png'; // Cambia a la luna
+        themeIcon.alt = 'Modo Claro';
         localStorage.setItem('theme', 'dark');
     } else {
-        themeToggle.textContent = 'Modo Oscuro';
+        themeIcon.src = './static/resources/sun.png'; // Cambia al sol
+        themeIcon.alt = 'Modo Oscuro';
         localStorage.setItem('theme', 'light');
     }
 });

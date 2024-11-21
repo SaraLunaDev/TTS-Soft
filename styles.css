@@ -79,18 +79,22 @@ button:hover {
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 10px 15px;
-    background: #cf6262;
-    color: white;
+    background: none; /* Sin fondo */
     border: none;
-    border-radius: 5px;
+    padding: 0;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
-.theme-button:hover {
-    background: #b14f4f;
+.theme-button img {
+    width: 32px; /* Ajusta al tamaño deseado */
+    height: 32px;
+    transition: transform 0.3s; /* Animación de escala */
 }
+
+.theme-button img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente al pasar el ratón */
+}
+
 
 /* Modo oscuro */
 body.dark-mode {
