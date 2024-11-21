@@ -108,6 +108,10 @@ body.dark-mode section {
     color: white;
 }
 
-button.dark-mode {
+body.dark-mode button {
     background: #333;
+}
+
+body.dark-mode button:hover  {
+    background: #202020;
 }
