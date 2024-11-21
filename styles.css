@@ -115,3 +115,7 @@ body.dark-mode button {
 body.dark-mode button:hover  {
     background: #202020;
 }
+
+body.dark-mode h2  {
+    background: white;
+}
