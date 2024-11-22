@@ -8,24 +8,36 @@ const voicesFolder = path.join(staticFolder, 'voices');
 const soundsOutput = path.join(staticFolder, 'sounds-list.json');
 const voicesOutput = path.join(staticFolder, 'voices-list.json');
 
-fs.readdir(soundsFolder, (err, files) => {
-    if (err) {
-        console.error('Error leyendo la carpeta de sonidos:', err);
-        return;
-    }
+function processFiles(folder, output, type) {
+    fs.readdir(folder, (err, files) => {
+        if (err) {
+            console.error(`Error leyendo la carpeta de ${type}:`, err);
+            return;
+        }
 
-    const soundFiles = files.filter(file => file.endsWith('.mp3'));
-    fs.writeFileSync(soundsOutput, JSON.stringify(soundFiles, null, 2));
-    console.log(`Archivo ${soundsOutput} generado con éxito con ${soundFiles.length} archivos.`);
-});
+        const processedFiles = files
+            .filter(file => file.endsWith('.mp3'))
+            .map(file => {
+                const [id, ...nameParts] = file.replace('.mp3', '').split('_');
+                if (!id || isNaN(id)) {
+                    console.warn(`El archivo '${file}' no sigue el formato <ID>_<NOMBRE>.mp3 y será ignorado.`);
+                    return null;
+                }
+                return {
+                    id: parseInt(id, 10),
+                    name: nameParts.join('_'),
+                    file: file
+                };
+            })
+            .filter(item => item !== null);
 
-fs.readdir(voicesFolder, (err, files) => {
-    if (err) {
-        console.error('Error leyendo la carpeta de voces:', err);
-        return;
-    }
+        fs.writeFileSync(output, JSON.stringify(processedFiles, null, 2));
+        console.log(`Archivo ${output} generado con éxito con ${processedFiles.length} archivos.`);
+    });
+}
 
-    const voiceFiles = files.filter(file => file.endsWith('.mp3'));
-    fs.writeFileSync(voicesOutput, JSON.stringify(voiceFiles, null, 2));
-    console.log(`Archivo ${voicesOutput} generado con éxito con ${voiceFiles.length} archivos.`);
-});
+// Procesar sonidos
+processFiles(soundsFolder, soundsOutput, 'sonidos');
+
+// Procesar voces
+processFiles(voicesFolder, voicesOutput, 'voces');

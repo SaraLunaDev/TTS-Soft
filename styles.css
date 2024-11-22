@@ -124,6 +124,36 @@ h2 {
     font-size: small;
 }
 
+.button-id {
+    color: white;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: inline-block;
+    min-width: 14px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.voice-id {
+    background-color: #e67777;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.sound-id {
+    background-color: #77abe6;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.button-text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+
 .button-30 {
     align-items: center;
     appearance: none;

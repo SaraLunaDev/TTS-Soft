@@ -21,15 +21,28 @@ if (savedTheme === 'light') {
     localStorage.setItem('theme', 'dark');
 }
 
-function loadButtons(container, directory, fileList, type) {
-    fileList.forEach(file => {
+function loadButtons(container, directory, itemList, type) {
+    // Ordenar los elementos por ID
+    const sortedList = itemList.sort((a, b) => a.id - b.id);
+
+    sortedList.forEach(item => {
         const button = document.createElement('button');
-        const fileName = file.replace('.mp3', '');
-        
-        // Asigna la clase `button-30`
         button.className = 'button-30';
-        button.role = 'button'; // Añade el atributo role
-        button.textContent = fileName; // Texto del botón
+        button.role = 'button';
+
+        // Contenedor para el ID
+        const numberSpan = document.createElement('span');
+        numberSpan.className = `button-id ${type}-id`; // Clase dinámica según el tipo
+        numberSpan.textContent = item.id;
+
+        // Contenedor para el nombre
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'button-text';
+        nameSpan.textContent = item.name;
+
+        // Añade el ID y el texto al botón
+        button.appendChild(numberSpan);
+        button.appendChild(nameSpan);
 
         button.addEventListener('click', () => {
             if (currentAudio) {
@@ -37,15 +50,15 @@ function loadButtons(container, directory, fileList, type) {
                 currentAudio.currentTime = 0;
             }
 
-            const audio = new Audio(`${directory}${file}`);
+            const audio = new Audio(`${directory}${item.file}`);
             audio.play();
             currentAudio = audio;
 
-            const clipboardText = type === 'voice' ? `(${fileName}:)` : `(${fileName})`;
+            const clipboardText = type === 'voice' ? `(${item.id}:)` : `(${item.id})`;
 
             navigator.clipboard.writeText(clipboardText).then(() => {
                 const notification = document.createElement('div');
-                notification.textContent = `Texto copiado ${clipboardText}`;
+                notification.textContent = `Texto copiado: ${clipboardText}`;
                 notification.style.position = 'fixed';
                 notification.style.bottom = '20px';
                 notification.style.right = '20px';
@@ -72,6 +85,8 @@ function loadButtons(container, directory, fileList, type) {
     });
 }
 
+
+// Cargar y generar botones para voces
 fetch('./static/voices-list.json')
     .then(response => response.json())
     .then(voiceFiles => {
@@ -79,6 +94,7 @@ fetch('./static/voices-list.json')
     })
     .catch(error => console.error('Error al cargar las voces:', error));
 
+// Cargar y generar botones para sonidos
 fetch('./static/sounds-list.json')
     .then(response => response.json())
     .then(soundFiles => {

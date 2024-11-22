@@ -1,12 +1,52 @@
 [
-  "Aerista.mp3",
-  "Alba.mp3",
-  "Arthur.mp3",
-  "Camille.mp3",
-  "Felipez.mp3",
-  "Gerta.mp3",
-  "Hana.mp3",
-  "Javier.mp3",
-  "Lucia.mp3",
-  "Martin.mp3"
+  {
+    "id": 10,
+    "name": "Martin",
+    "file": "10_Martin.mp3"
+  },
+  {
+    "id": 1,
+    "name": "Aerista",
+    "file": "1_Aerista.mp3"
+  },
+  {
+    "id": 2,
+    "name": "Alba",
+    "file": "2_Alba.mp3"
+  },
+  {
+    "id": 3,
+    "name": "Arthur",
+    "file": "3_Arthur.mp3"
+  },
+  {
+    "id": 4,
+    "name": "Camille",
+    "file": "4_Camille.mp3"
+  },
+  {
+    "id": 5,
+    "name": "Felipez",
+    "file": "5_Felipez.mp3"
+  },
+  {
+    "id": 6,
+    "name": "Gerta",
+    "file": "6_Gerta.mp3"
+  },
+  {
+    "id": 7,
+    "name": "Hana",
+    "file": "7_Hana.mp3"
+  },
+  {
+    "id": 8,
+    "name": "Javier",
+    "file": "8_Javier.mp3"
+  },
+  {
+    "id": 9,
+    "name": "Lucia",
+    "file": "9_Lucia.mp3"
+  }
 ]
