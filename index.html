@@ -22,66 +22,81 @@
         </button>
     </header>
     <main id="layout">
-        <div id="mainContainer">
-            <section id="intro">
-                <h2>Holiwi!</h2>
-                <p>
-                    En esta pagina podras ver como usar las voces y sonidos dentro del propio TTS. Clica en los botones para reproducir el sonido, tambien se copiara el codigo del sonido en tu portapapeles.
-                </p>
-            </section>
+        <div id="contentArea">
+            <div id="mainContainer">
+                <section id="intro">
+                    <h2>Holiwi!</h2>
+                    <p>
+                        En esta pagina podras ver como usar las voces y sonidos dentro del propio TTS. En este recuadro podras validar tu texto comprobando que las voces y audios cambien de color.
+                    </p>
+                    <div id="textEditor" contenteditable="true" placeholder="Escribe aquí..."></div>
+                    <div id="textEditorProgress">
+                        <div id="progressBarContainer">
+                            <div id="progressBar"></div>
+                        </div>
+                        <button id="copyButton" class="button-74"></button>
+                    </div>
+                </section>
 
-            <section id="voices">
-                <h2>Voces</h2>
-                <div id="voiceContainer"></div>
-            </section>
+                <section id="voices">
+                    <h2>Voces</h2>
+                    <div id="voiceContainer"></div>
+                </section>
 
-            <section id="sounds">
-                <h2>Sonidos</h2>
-                <div id="soundContainer"></div>
-            </section>
-        </div>
-        <div id="sideContainer">
-            <section id="tutorial">
-                <h2>Tutorial de Voces</h2>
-                <p>
-                    Para usar las voces tendras que escribir el nombre de la voz con dos puntos entre parentesis.
-                </p>
-                <div id="ejemplo">
-                    <span class="rosa">(Martin:)</span> Hola soy Martín.
-                </div>
-                <p>
-                    Si quieres puedes usar varias voces en el mismo texto.
-                </p>
-                <div id="ejemplo">
-                    <span class="rosa">(Martin:)</span> Hola soy Martín y ahora <span class="rosa">(Aerista:)</span> soy Aerista.
-                </div>
-            </section>
+                <section id="sounds">
+                    <h2>Sonidos</h2>
+                    <div id="soundContainer"></div>
+                </section>
+            </div>
+            <div id="sideContainer">
+                <section id="tutorial">
+                    <h2>Tutorial de Voces</h2>
+                    <p>
+                        Para usar las voces tendras que escribir el nombre de la voz con dos puntos entre parentesis.
+                    </p>
+                    <div id="ejemplo">
+                        <span class="rosa">(Martin:)</span> Hola soy Martín.
+                    </div>
+                    <p>
+                        Si quieres puedes usar varias voces en el mismo texto.
+                    </p>
+                    <div id="ejemplo">
+                        <span class="rosa">(Martin:)</span> Hola soy Martín y ahora <span class="rosa">(Aerista:)</span>
+                        soy Aerista.
+                    </div>
+                </section>
 
-            <section>
-                <h2>Tutorial de Sonidos</h2>
-                <p>
-                    Para usar los sonidos tendras que escribir el nombre del sonido entre parentesis.
-                </p>
-                <div id="ejemplo">
-                    Estoy muy triste <span class="azul">(llorar)</span> voy a beber agua <span class="azul">(servir-agua)</span>.
-                </div>
-            </section>
+                <section>
+                    <h2>Tutorial de Sonidos</h2>
+                    <p>
+                        Para usar los sonidos tendras que escribir el nombre del sonido entre parentesis.
+                    </p>
+                    <div id="ejemplo">
+                        Estoy muy triste <span class="azul">(llorar)</span> voy a beber agua <span
+                            class="azul">(servir-agua)</span>.
+                    </div>
+                </section>
 
-            <section id="tutorial">
-                <h2>Voces y Sonidos</h2>
-                <p>Puedes combinar el uso de voces con el uso de audios.</p>
-                <div id="ejemplo">
-                    <span class="rosa">(Arthur:)</span> Que rica esta cerveza.. <span class="azul">(tragar)</span> <span class="rosa">(Aerista:)</span> Deja de beber borracho! <span class="azul">(puñetazo)</span> ya vale eh!?
-                </div>
-            </section>
+                <section id="tutorial">
+                    <h2>Voces y Sonidos</h2>
+                    <p>Puedes combinar el uso de voces con el uso de audios.</p>
+                    <div id="ejemplo">
+                        <span class="rosa">(Arthur:)</span> Que rica esta cerveza.. <span class="azul">(tragar)</span>
+                        <span class="rosa">(Aerista:)</span> Deja de beber borracho! <span
+                            class="azul">(puñetazo)</span> ya vale eh!?
+                    </div>
+                </section>
 
-            <section id="tutorial">
-                <h2>Avanzado</h2>
-                <p>Al clicar un boton se te copiara el id en vez de la voz, de esta forma puedes si quieres ahorrarte caracteres</p>
-                <div id="ejemplo">
-                    <span class="rosa">(3:)</span> Hola soy Arthur, <span class="rosa">(Arthur:)</span> y yo tambien lo soy. Toma <span class="azul">(sartenazo)</span> y toma tambien <span class="azul">(25)</span>
-                </div>
-            </section>
+                <section id="tutorial">
+                    <h2>Avanzado</h2>
+                    <p>Al clicar un boton se te copiara el id en vez de la voz, de esta forma puedes si quieres
+                        ahorrarte caracteres</p>
+                    <div id="ejemplo">
+                        <span class="rosa">(3:)</span> Hola soy Arthur, <span class="rosa">(Arthur:)</span> y yo tambien
+                        lo soy. Toma <span class="azul">(sartenazo)</span> y toma tambien <span class="azul">(25)</span>
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
     <footer>

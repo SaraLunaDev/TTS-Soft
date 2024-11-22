@@ -10,6 +10,154 @@ const themeIcon = document.getElementById('themeIcon');
 
 const savedTheme = localStorage.getItem('theme');
 
+const textEditor = document.getElementById('textEditor');
+let voices = [];
+let sounds = [];
+
+const progressBar = document.getElementById('progressBar');
+
+const copyButton = document.getElementById('copyButton');
+
+// Función para copiar el texto del editor al portapapeles
+copyButton.addEventListener('click', () => {
+    const text = textEditor.innerText; // Obtener el texto del editor
+
+    navigator.clipboard.writeText(text).then(() => {
+        // Mostrar una notificación de éxito
+        const notification = document.createElement('div');
+        notification.textContent = 'Texto copiado al portapapeles';
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.right = '20px';
+        notification.style.padding = '10px';
+        notification.style.backgroundColor = '#444';
+        notification.style.color = '#fff';
+        notification.style.borderRadius = '5px';
+        notification.style.zIndex = '1000';
+        document.body.appendChild(notification);
+
+        // Eliminar la notificación después de 2 segundos
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 2000);
+    }).catch(err => {
+        console.error('Error al copiar el texto:', err);
+    });
+});
+
+// Configuración: Límite de caracteres
+let characterLimit = 500; // Puedes modificar este valor
+
+// Función para actualizar la barra de progreso
+function updateProgressBar() {
+    const textLength = textEditor.innerText.length; // Obtener longitud del texto actual
+    const progressPercentage = Math.min((textLength / characterLimit) * 100, 100); // Calcular porcentaje
+    progressBar.style.width = `${progressPercentage}%`;
+}
+
+// Función actualizada para cargar datos desde JSON
+Promise.all([
+    fetch('./static/voices-list.json').then(res => res.json()),
+    fetch('./static/sounds-list.json').then(res => res.json())
+]).then(([voiceData, soundData]) => {
+    voices = voiceData.map(v => ({ id: v.id.toString(), name: v.name }));
+    sounds = soundData.map(s => ({ id: s.id.toString(), name: s.name }));
+}).catch(error => console.error('Error cargando datos:', error));
+
+// Función para verificar si una voz o sonido es válido
+function isVoiceValid(identifier) {
+    return voices.some(v => v.id === identifier || v.name === identifier);
+}
+
+function isSoundValid(identifier) {
+    return sounds.some(s => s.id === identifier || s.name === identifier);
+}
+
+// Detectar cambios en el contenido editable
+textEditor.addEventListener('input', () => {
+    let text = textEditor.innerText;
+
+    // Limitar caracteres al pegar o escribir
+    if (text.length > characterLimit) {
+        text = text.substring(0, characterLimit); // Truncar al límite permitido
+        textEditor.innerText = text; // Reemplazar con texto truncado
+        placeCaretAtPosition(textEditor, characterLimit); // Mover el cursor al final
+    }
+
+    updateProgressBar(); // Actualizar la barra de progreso
+
+    const cursorPosition = saveCursorPosition(textEditor); // Guardar la posición del cursor
+
+    const formattedText = text.replace(
+        /\(([^():]+):\)|\(([^():]+)\)/g,
+        (match, rosaMatch, azulMatch) => {
+            const rosaValid = rosaMatch && isVoiceValid(rosaMatch);
+            const azulValid = azulMatch && isSoundValid(azulMatch);
+
+            if (rosaValid) {
+                return `<span class="rosa">(${rosaMatch}:)</span>`;
+            } else if (azulValid) {
+                return `<span class="azul">(${azulMatch})</span>`;
+            } else {
+                return match; // No válido, no se colorea
+            }
+        }
+    );
+
+    updateEditorWithStyledText(formattedText, cursorPosition); // Actualizar contenido con estilos
+});
+
+// Función para guardar la posición del cursor
+function saveCursorPosition(element) {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    const preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(element);
+    preCaretRange.setEnd(range.endContainer, range.endOffset);
+    return preCaretRange.toString().length;
+}
+
+// Función para restaurar la posición del cursor
+function placeCaretAtPosition(element, position) {
+    const range = document.createRange();
+    const selection = window.getSelection();
+
+    let currentNode = element;
+    let charCount = 0;
+
+    while (currentNode) {
+        if (currentNode.nodeType === Node.TEXT_NODE) {
+            const nextCharCount = charCount + currentNode.length;
+            if (position <= nextCharCount) {
+                range.setStart(currentNode, position - charCount);
+                range.collapse(true);
+                break;
+            }
+            charCount = nextCharCount;
+        }
+        currentNode = getNextNode(currentNode, element);
+    }
+
+    selection.removeAllRanges();
+    selection.addRange(range);
+}
+
+function getNextNode(node, container) {
+    if (node.firstChild) return node.firstChild;
+    while (node) {
+        if (node.nextSibling) return node.nextSibling;
+        node = node.parentNode;
+        if (node === container) break;
+    }
+    return null;
+}
+
+// Actualizar el contenido del div con estilos aplicados
+function updateEditorWithStyledText(htmlContent, cursorPosition) {
+    textEditor.innerHTML = htmlContent; // Reemplazar contenido
+    placeCaretAtPosition(textEditor, cursorPosition); // Restaurar posición del cursor
+}
+
 if (savedTheme === 'light') {
     document.body.classList.remove('dark-mode');
     themeIcon.src = './static/resources/sun.png';
@@ -84,7 +232,6 @@ function loadButtons(container, directory, itemList, type) {
         container.appendChild(button);
     });
 }
-
 
 // Cargar y generar botones para voces
 fetch('./static/voices-list.json')
