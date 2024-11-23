@@ -18,6 +18,40 @@ const progressBar = document.getElementById('progressBar');
 
 const copyButton = document.getElementById('copyButton');
 
+// Lista de API keys
+const apiKeys = [
+    "sk_c573750d244134bbd9d75e2dd6e7ada6b37292b4a515dab5",
+    "sk_340708e3827dea1f0cd680f9e11573817dd8bcd52f7fa124"
+];
+
+async function updateCreditsDisplay() {
+    const percentage = await fetchCombinedApiCredits(apiKeys);
+    const creditsPercentageElement = document.getElementById("creditsPercentage");
+
+    if (percentage !== null) {
+        creditsPercentageElement.textContent = `${percentage}`;
+        updateCreditsColor(percentage); // Actualiza el color según el porcentaje
+    } else {
+        creditsPercentageElement.textContent = "Error al cargar";
+    }
+}
+
+// Cambiar el color según el porcentaje
+function updateCreditsColor(percentage) {
+    const creditsPercentageElement = document.getElementById("creditsPercentage");
+    creditsPercentageElement.classList.remove("low", "medium");
+
+    if (percentage < 25) {
+        creditsPercentageElement.classList.add("low");
+    } else if (percentage < 50) {
+        creditsPercentageElement.classList.add("medium");
+    }
+}
+
+// Llamar a la función al cargar la página
+document.addEventListener("DOMContentLoaded", updateCreditsDisplay);
+
+
 // Función para copiar el texto del editor al portapapeles
 copyButton.addEventListener('click', () => {
     const text = textEditor.innerText; // Obtener el texto del editor
@@ -262,3 +296,34 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
+
+async function fetchCombinedApiCredits(apiKeys) {
+    const url = "https://api.elevenlabs.io/v1/user/subscription";
+    let totalUsed = 0;
+    let totalLimit = 0;
+
+    for (const apiKey of apiKeys) {
+        const headers = { "xi-api-key": apiKey };
+
+        try {
+            const response = await fetch(url, { headers });
+            if (!response.ok) {
+                throw new Error(`Error al obtener los créditos para la API key: ${apiKey}`);
+            }
+            const data = await response.json();
+            totalUsed += data.character_count || 0;
+            totalLimit += data.character_limit || 0;
+        } catch (error) {
+            console.error(`Error con la API key ${apiKey}:`, error);
+            continue; // Continúa con la siguiente clave en caso de error
+        }
+    }
+
+    if (totalLimit > 0) {
+        const availablePercentage = 100 - (totalUsed / totalLimit) * 100;
+        return availablePercentage.toFixed(2); // Redondeado a dos decimales
+    }
+
+    return null; // Devuelve null si no hay datos válidos
+}
+

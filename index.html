@@ -27,7 +27,8 @@
                 <section id="intro">
                     <h2>Holiwi!</h2>
                     <p>
-                        En esta pagina podras ver como usar las voces y sonidos dentro del propio TTS. En este recuadro podras validar tu texto comprobando que las voces y audios cambien de color.
+                        En esta pagina podras ver como usar las voces y sonidos dentro del propio TTS. En este recuadro
+                        podras validar tu texto comprobando que las voces y audios cambien de color.
                     </p>
                     <div id="textEditor" contenteditable="true" placeholder="Escribe aquí..."></div>
                     <div id="textEditorProgress">
@@ -39,8 +40,19 @@
                 </section>
 
                 <section id="voices">
-                    <h2>Voces</h2>
-                    <div id="voiceContainer"></div>
+                    <div id="voceslayout">
+                        <div id="voiceHeader">
+                            <h2>Voces</h2>
+                            <div id="creditsContainer">
+                                <p>
+                                    <span class="verde">💰</span>
+                                    <span id="creditsPercentage">...</span>
+                                    <span class="verde">%</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div id="voiceContainer"></div>
+                    </div>
                 </section>
 
                 <section id="sounds">
